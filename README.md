@@ -1,4 +1,6 @@
-![CD ProJect](./img/img2.png)
+# CD ProJect: Create Documents from Python and Jupyter
+
+<img src="./img/img2.png" width="70%" alt="CD ProJect" style="pointer-events: none;" />
 
 While working with Open WebUI, I noticed a significant gap: **ChatGPT can natively generate formatted documents, but most open-source models cannot.** This limitation became particularly frustrating when I needed to produce professional deliverables like reports, spreadsheets, and presentations directly from AI responses.
 
@@ -420,7 +422,7 @@ In the tool set the `BASE_DOWNLOAD_URL` to `http://localhost:PORT_OF_THE_WEB_SER
 
 ---
 
-# Issues
+# Issues & Solutions
 
 | Issue | Solution |
 |-------|----------|
