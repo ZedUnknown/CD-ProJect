@@ -35,7 +35,7 @@ Here’s how everything fits together step by step:
 
 ### 1. Tool
 
-- The model generates Python code that creates files (e.g., `docx`, `pdf`, `xlsx`, `pptx`, `csv`, `txt`, `rtf`, `odt`, `ods`, `odp`, `html`, `xml`, `json`, `md`, `log`, `ipynb`, `py`, `js`, `css`, `ts`, `c`, `cpp`, `java`, `go`, `sh`, `yml`, `ini`, `sql`, `ps1`, `bat`)
+- The model generates Python code that creates files (e.g., `docx`, `pdf`, `xlsx`, `pptx`, `csv`, `txt`, `rtf`, `odt`, `ods`, `odp`, `html`, `xml`, etc...).
 
 - The code is wrapped and sent to the **Jupyter server** running inside Docker (default port: `8888`).
 
