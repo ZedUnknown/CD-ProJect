@@ -86,7 +86,7 @@ Here's how everything fits together step by step:
   ?user_id=ce7aa5b1-0083-433e-acff-d2e5b3bda778&chat_id=7169d05f-2166-4b88-b176-ed9c5657c439&file_name=_EMHWczQxJzGp-EPdjoWJg.docx
   ```
 
-- Extracted key–value pairs:
+- Extracted key-value pairs:
 
   - `user_id` → `ce7aa5b1-0083-433e-acff-d2e5b3bda778`
   - `chat_id` → `7169d05f-2166-4b88-b176-ed9c5657c439`
