@@ -1,12 +1,12 @@
-
-
-# CD ProJect
+![CD ProJect](./img/img2.png)
 
 While working with Open WebUI, I noticed a significant gap: **ChatGPT can natively generate formatted documents, but most open-source models cannot.** This limitation became particularly frustrating when I needed to produce professional deliverables like reports, spreadsheets, and presentations directly from AI responses.
 
 **CD ProJect** (Create Document from Python and Jupyter) solves this by giving *all* models in Open WebUI the ability to generate production-ready files. Instead of being limited to text output, your models can now create `.docx`, `.pdf`, `.xlsx`,  `.ppt`, `csv`, `markdown` and other formats through secure Python execution.
 
 The implementation is straightforward but carefully designed:
+
+<a href="#"><img align="right" width="150px" src="./img/bird.png" ></a>
 
 - Jupyter runs in an isolated Docker container (no host system exposure)
 - Document generation happens through standard Python libraries
