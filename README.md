@@ -422,4 +422,6 @@ In the tool set the `BASE_DOWNLOAD_URL` to `http://localhost:PORT_OF_THE_WEB_SER
 
 # Issues
 
-- If the model is unable to recognize the tool, please set the `Function Calling` parameter to `Native` in OpenWebUI. ![img/img3.png](./img/function-calling.png)
+| Issue | Solution |
+|-------|----------|
+| If the model is unable to recognize the tool, please set the `Function Calling` parameter to `Native` in OpenWebUI. | ![function-calling](./img/function-calling.png) |
