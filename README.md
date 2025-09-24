@@ -21,7 +21,7 @@ I built this specifically because I was tired of:
 
 The setup requires a few components (detailed in the documentation), but the trade-off is worth it: your models gain professional document creation abilities while maintaining enterprise security standards. If you've ever wished your local models could do what ChatGPT does with documents, this is for you.
 
-
+---
 
 # 🔄 Process Explained
 
@@ -417,3 +417,4 @@ docker compose up -d
 ## 4. Serving Files (Local)
 
 In the tool set the `BASE_DOWNLOAD_URL` to `http://localhost:PORT_OF_THE_WEB_SERVER/backend-api/files/download`, where `PORT_OF_THE_WEB_SERVER` → the port configured in [Setting Up the Webserver](#2-setting-up-the-webserver) (e.g., 8081).
+
