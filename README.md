@@ -31,7 +31,7 @@ The setup requires few setups to get up and running (detailed in the documentati
 
 # 🔄 Process Explained
 
-Here’s how everything fits together step by step:
+Here's how everything fits together step by step:
 
 ### 1. Tool
 
@@ -312,7 +312,7 @@ if __name__ == "__main__":
 
 ## 3. Serving Files with Cloudflared
 
-If you **don’t have a domain** or don’t plan to use **Cloudflare tunnels** to serve files externally, skip to [Serving Files (Local)](#4-serving-files-local).
+If you **don't have a domain** or don't plan to use **Cloudflare tunnels** to serve files externally, skip to [Serving Files (Local)](#4-serving-files-local).
 
 This section explains how to securely expose your local file server and OpenWebUI instance over the internet using **Cloudflared tunnels**.
 
