@@ -31,7 +31,6 @@ class Tools:
         initialize the document generator tool
         """
         self.valves = self.Valves()
-        self.citation = False
 
     class Valves(BaseModel):
         """
@@ -502,8 +501,7 @@ else:
                         }
                     )
 
-                # add citation with the download link
-                # emit success status
+                # emit download URL with a message (currently doesn't work)
                 if __event_emitter__:
                     await __event_emitter__(
                         {
