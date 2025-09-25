@@ -14,6 +14,7 @@ Critical Error codes:
 """
 
 from pydantic import BaseModel, Field
+from datetime import datetime
 import websocket
 import requests
 import textwrap
@@ -47,6 +48,10 @@ class Tools:
         BASE_DOWNLOAD_URL: str = Field(
             default="https://your.domain.com/backend-api/files/download",
             description="Base URL for file downloads",
+        )
+        ENABLE_DEBUG: bool = Field(
+            default=False,
+            description="Enable debug mode",
         )
 
     async def create_document(
@@ -103,6 +108,7 @@ class Tools:
                             "data": {
                                 "description": "Something went wrong! Please contact the administrator and provide them with the error code 18854",
                                 "done": True,
+                                "hidden": False if self.valves.ENABLE_DEBUG else True,
                             },
                         }
                     )
@@ -455,7 +461,7 @@ else:
                             logger.info(f"TRACEBACK: {line}")
                         break
 
-                    # detect when execution is complete
+                    # detect when execution is complete (this is a part of jupyter, not open webui)
                     elif msg_type == "status":
                         if (response_msg.get("content", {}).get("execution_state") == "idle"):
                             logger.info("Execution completed.")
@@ -496,28 +502,47 @@ else:
                             "type": "status",
                             "data": {
                                 "description": f"{document_name} generated successfully!",
-                                "done": True,
+                                "done": True
                             },
                         }
                     )
 
-                # emit download URL with a message (currently doesn't work)
+                # emit citation to download the document
                 if __event_emitter__:
                     await __event_emitter__(
                         {
-                            "type": "message",
-                            "content": f"Your [{document_name}]({download_url}) is ready for download."
+                            "type": "citation",
+                            "data": {
+                                "document": [
+                                    "Download the document from the above url."
+                                ],
+                                "metadata": [
+                                    {
+                                        "date_accessed": datetime.now().isoformat(),
+                                        "source": f"{document_name}",
+                                    }
+                                ],
+                                "source": {
+                                    "name": f"Download '{document_name}' here",
+                                    "url": f"{download_url}",
+                                },
+                            },
                         }
                     )
-
+                
                 return f"[{document_name}]({download_url})"
+            
             else:
                 error_msg = f"Document generation failed: {jupyter_result.get('message', 'Unknown error') if jupyter_result else 'No valid response from Jupyter'}"
                 if __event_emitter__:
                     await __event_emitter__(
                         {
                             "type": "status",
-                            "data": {"description": error_msg, "done": True},
+                            "data": {
+                                "description": error_msg, 
+                                "done": True,
+                                "hidden": False if self.valves.ENABLE_DEBUG else True,
+                            },
                         }
                     )
                 return f"Error: {error_msg}"
@@ -528,7 +553,11 @@ else:
                 await __event_emitter__(
                     {
                         "type": "status",
-                        "data": {"description": error_msg, "done": True},
+                        "data": {
+                            "description": error_msg, 
+                            "done": True,
+                            "hidden": False if self.valves.ENABLE_DEBUG else True,
+                        },
                     }
                 )
             return f"Error: {error_msg}"
@@ -537,6 +566,13 @@ else:
             error_msg = f"Error in document generation: {str(e)}"
             if __event_emitter__:
                 await __event_emitter__(
-                    {"type": "status", "data": {"description": error_msg, "done": True}}
+                    {
+                        "type": "status", 
+                        "data": {
+                            "description": error_msg, 
+                            "done": True,
+                            "hidden": False if self.valves.ENABLE_DEBUG else True,
+                        },
+                    }
                 )
             return f"Error: {error_msg}"
