@@ -8,7 +8,7 @@
 
 While working with Open WebUI, I noticed a significant gap: **ChatGPT can natively generate formatted documents, but most open-source models cannot.** This limitation became particularly frustrating when I needed to produce professional deliverables like reports, spreadsheets, and presentations directly from AI responses.
 
-**CD ProJect** (Create Document from Python and Jupyter) solves this by giving *all* models in Open WebUI the ability to generate production-ready files. Instead of being limited to text output, your models can now create `.docx`, `.pdf`, `.xlsx`,  `.ppt`, `csv`, `markdown` and other formats through secure Python execution.
+**CD ProJect** (Create Documents from Python and Jupyter) solves this by giving *all* models in Open WebUI the ability to generate production-ready files. Instead of being limited to text output, your models can now create `.docx`, `.pdf`, `.xlsx`,  `.pptx`, `csv`, `markdown` and other formats through secure Python execution.
 
 The implementation is straightforward but carefully designed:
 
@@ -16,7 +16,7 @@ The implementation is straightforward but carefully designed:
 
 - Jupyter runs in an isolated Docker container (no host system exposure)
 - Document generation happens through standard Python libraries
-- Files are delivered via a dedicated webserver with proper security
+- Files are delivered via a dedicated webserver with security measures
 - All components integrate cleanly with Open WebUI
 
 I built this specifically because I was tired of:
@@ -25,7 +25,7 @@ I built this specifically because I was tired of:
 - Struggling with formatting issues
 - Wishing my local models had ChatGPT's document capabilities
 
-The setup requires few setups to get up and running (detailed in the documentation), but the trade-off is worth it: your models gain professional document creation abilities while maintaining enterprise security standards. If you've ever wished your local models could do what ChatGPT does with documents, this is for you.
+The setup requires moderate steps to get up and running (detailed in the documentation), but the trade-off is worth it: your models gain professional document creation abilities while maintaining enterprise security standards. If you've ever wished your local models could do what ChatGPT does with documents, this is for you.
 
 ---
 
@@ -70,8 +70,8 @@ Here's how everything fits together step by step:
 
 - Cloudflared inspects requests for specific paths:
 
-  ```
-  /backend-api/files/*
+  ```yaml
+  path: /backend-api/files/*
   ```
 
 - Matching requests are **redirected to the local file-serving webserver**.
