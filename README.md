@@ -30,6 +30,9 @@ I built this specifically because I was tired of:
 
 The setup requires moderate steps to get up and running (detailed in the documentation), but the trade-off is worth it: your models gain professional document creation abilities while maintaining enterprise security standards. If you've ever wished your local models could do what ChatGPT does with documents, this is for you.
 
+#### Here is a demonstration:
+![demo](https://github.com/ZedUnknown/CD-ProJect/blob/main/img/demo.gif)
+
 ---
 
 # 🔄 Process Explained
