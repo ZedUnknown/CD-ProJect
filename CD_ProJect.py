@@ -530,7 +530,7 @@ else:
                         }
                     )
                 
-                return f"[{document_name}]({download_url})"
+                return f"Provide this URL to the user to download the document: [{document_name}]({download_url})"
             
             else:
                 error_msg = f"Document generation failed: {jupyter_result.get('message', 'Unknown error') if jupyter_result else 'No valid response from Jupyter'}"
@@ -575,4 +575,5 @@ else:
                         },
                     }
                 )
+
             return f"Error: {error_msg}"
