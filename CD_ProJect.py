@@ -5,7 +5,7 @@ author_url: https://github.com/ZedUnknown
 description: Create Documents from Python + Jupyter
 requirements:
 version: 1.0.0
-licence: MIT
+licence: Apache-2.0 license
 """
 
 """
@@ -577,3 +577,4 @@ else:
                 )
 
             return f"Error: {error_msg}"
+
