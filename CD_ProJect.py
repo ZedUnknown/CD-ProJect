@@ -4,7 +4,7 @@ author: Zed Unknown
 author_url: https://github.com/ZedUnknown
 description: Create Documents from Python + Jupyter
 requirements:
-version: 1.0.0
+version: 1.1.0
 licence: Apache-2.0 license
 """
 
@@ -180,7 +180,7 @@ import secrets
 
 # ================== WRAPPER ==================
 
-folder = f"/mnt/data/user_files/{user_id}/{chat_id}"
+folder = f"/mnt/data/{user_id}/{chat_id}"
 os.makedirs(folder, exist_ok=True)
 file_name = secrets.token_urlsafe(16) + "." + "{extension}"
 final_path = os.path.join(folder, file_name)
@@ -254,7 +254,7 @@ try:
 except Exception as e:
     raise RuntimeError("An error occurred in CSV patch") from e
 
-# ---- RTF / TXT / MD (pypandoc) ----
+# ---- RTF (pypandoc) ----
 # PAIN IN THE EYES, WHO MADE THIS MODULE??
 try:
     import importlib, os, sys
@@ -304,7 +304,7 @@ try:
             tmp_path = final_path + ".tmp"
             with open(tmp_path, "wb") as f:
                 f.write(data)
-            os.replace(tmp_path, final_path)  # atomic on most OSes
+            os.replace(tmp_path, final_path) # atomic on most OSes
 
             # Verify file exists
             if not os.path.exists(final_path):
@@ -320,6 +320,15 @@ except ImportError:
     pass
 except Exception as e:
     raise RuntimeError(f"Pandoc patching failed: {{str(e)}}") from e
+
+# ---- TXT / MD (python) ----
+def writeToFile(content: str) -> None:
+    try:
+        with open(final_path, "w", encoding="utf-8") as file:
+            file.write(content)
+
+    except Exception as e:
+        raise RuntimeError(f"An error occurred in writeToFile: {{str(e)}}") from e
 
 # ================== MODEL GENERATED CODE ==================
 {normalized_code}
@@ -530,7 +539,7 @@ else:
                         }
                     )
                 
-                return f"Provide this URL to the user to download the document: [{document_name}]({download_url})"
+                return f"URL to download the document: [{document_name}]({download_url})"
             
             else:
                 error_msg = f"Document generation failed: {jupyter_result.get('message', 'Unknown error') if jupyter_result else 'No valid response from Jupyter'}"
@@ -577,4 +586,3 @@ else:
                 )
 
             return f"Error: {error_msg}"
-
