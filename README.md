@@ -30,6 +30,9 @@ I built this specifically because I was tired of:
 
 The setup requires moderate steps to get up and running (detailed in the documentation), but the trade-off is worth it: your models gain professional document creation abilities while maintaining enterprise security standards. If you've ever wished your local models could do what ChatGPT does with documents, this is for you.
 
+> It is better to use the provided tool's system prompt to constrain the tool's behavior, define its persona, specify input/output formats, and set explicit boundaries for its operation, ensuring predictable and reliable function calls and preventing unwanted actions or failures.
+
+
 #### Here is a demonstration:
 ![demo](https://github.com/ZedUnknown/CD-ProJect/blob/main/img/demo.gif)
 
